@@ -1,15 +1,17 @@
 # Time
 
-Simple digital clock made with HTML, CSS, and JavaScript.  
-Displays the current time with a **dark design** and large red numbers — updated in real time —  
-and allows you to **select the country/timezone** to see the time there.
+A simple digital clock built with **HTML, CSS, and JavaScript**.
+It displays the **current time** in a clean dark-themed interface with large red digital numbers, updated in real time.
+You can also **select a country/timezone** from a dropdown to see the local time there, including the full date with day of the week.
 
 ## Features
 
-* **Real-time clock** — shows hours, minutes, and seconds.
-* **Select timezone** — choose from a dropdown of countries with their flags and corresponding timezones.
-* **Dark design** — black background with bright red digital-style numbers.
-* **Fullscreen toggle** — click the fullscreen button to enter or exit fullscreen mode.
+* **Real-time digital clock** showing hours, minutes, and seconds with smooth 1-second updates.
+* **Date display** showing the weekday, day, month, and year below the time.
+* **Timezone selector** with country flags for easy recognition and quick switching.
+* **Dark mode design** with a striking black background and glowing red digital font.
+* **Fullscreen toggle** button for immersive viewing.
+* **Responsive layout** — the clock and date scale dynamically to fit various screen sizes.
 
 ## Built with
 
