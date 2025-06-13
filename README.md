@@ -4,14 +4,14 @@ Simple digital clock made with HTML, CSS, and JavaScript.
 Displays the current time with a **dark design** and large red numbers — updated in real time —  
 and allows you to **select the country/timezone** to see the time there.
 
-## 🔹 Features
+## Features
 
 * **Real-time clock** — shows hours, minutes, and seconds.
 * **Select timezone** — choose from a dropdown of countries with their flags and corresponding timezones.
 * **Dark design** — black background with bright red digital-style numbers.
 * **Fullscreen toggle** — click the fullscreen button to enter or exit fullscreen mode.
 
-## 🔹 Built with
+## Built with
 
 * HTML
 * CSS
@@ -19,11 +19,11 @@ and allows you to **select the country/timezone** to see the time there.
 * [Digital-7 Mono font](https://cdnfonts.com/digital-7-mono)
 * [Bootstrap Icons](https://cdn.jsdelivr.net/npm/bootstrap-icons)
 
-## 🔹 How to view
+## How to view
 
 Open the `index.html` file in any modern browser or visit the live demo (if hosted).
 
-## 🔹 Included Timezones
+## Included Timezones
 
 Number of timezones: 66
 The clock supports the following countries and timezones:
