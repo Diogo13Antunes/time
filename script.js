@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	const countrySelect = document.getElementById("country-select");
 	const clock = document.getElementById("clock");
 	const date = document.getElementById("date");
+	let selectedTimezone = null
 
 	function populateSelect() {
 		timezones.forEach(({ country, timezone, flag }) => {
@@ -12,10 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 	}
 
-	function updateClock(timezone) {
+	function updateClock() {
 		const now = new Date();
 		const options = {
-			timeZone: timezone,
+			timeZone: selectedTimezone,
 			hour12: false,
 			hour: "2-digit",
 			minute: "2-digit",
@@ -37,9 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
 		date.textContent = `${dayOfWeek} ${day} ${month} ${year}`;
 	}
 
-	function startClock(timezone) {
+	function startClock() {
 		function update() {
-			updateClock(timezone);
+			updateClock();
 		}
 		update();
 		const now = new Date();
@@ -52,10 +53,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	populateSelect();
 	countrySelect.selectedIndex = 0;
-	startClock(countrySelect.value);
+	selectedTimezone = countrySelect.value;
+	startClock();
 
 	countrySelect.addEventListener("change", (e) => {
-		startClock(e.target.value);
+		selectedTimezone = e.target.value;
 	});
 
 	const fullscreenBtn = document.getElementById("fullscreen-btn");
