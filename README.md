@@ -96,4 +96,3 @@ The clock supports the following countries and timezones:
 | Paraguay             | America/Asuncion                | 🇵🇾    |
 | Uruguay              | America/Montevideo              | 🇺🇾    |
 | Bolivia              | America/La\_Paz                 | 🇧🇴    |
-| .................... | ............................... | ..... |
