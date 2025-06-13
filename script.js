@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			month: "long",
 			day: "2-digit",
 		};
-		const formatter = new Intl.DateTimeFormat([], options);
+		const formatter = new Intl.DateTimeFormat("en-US", options);
 		const parts = formatter.formatToParts(now);
 		const time = `${parts.find((p) => p.type === "hour").value}:${parts.find((p) => p.type === "minute").value}:${parts.find((p) => p.type === "second").value}`;
 		const dayOfWeek = parts.find((p) => p.type === "weekday").value;
