@@ -21,7 +21,7 @@ and allows you to **select the country/timezone** to see the time there.
 
 ## How to view
 
-Open the `index.html` file in any modern browser or visit the live demo (if hosted).
+Visit the clock directly online: [https://diogo13antunes.github.io/time/](https://diogo13antunes.github.io/time/)
 
 ## Included Timezones
 
