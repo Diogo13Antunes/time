@@ -25,7 +25,6 @@ Open the `index.html` file in any modern browser or visit the live demo (if host
 
 ## Included Timezones
 
-Number of timezones: 66
 The clock supports the following countries and timezones:
 
 | Country              | Timezone                        | Flag  |
