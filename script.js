@@ -64,14 +64,12 @@ document.addEventListener('DOMContentLoaded', () => {
 	function startClock() {
 		function update() {
 			updateClock();
+			// Align next tick to the next full second to avoid drift
+			const now = new Date();
+			const delay = 1000 - now.getMilliseconds();
+			setTimeout(update, delay);
 		}
 		update();
-		const now = new Date();
-		const delay = 1000 - now.getMilliseconds();
-		setTimeout(() => {
-			update();
-			setInterval(update, 1000);
-		}, delay);
 	}
 
 	function handleTimezoneChange(timezone) {
