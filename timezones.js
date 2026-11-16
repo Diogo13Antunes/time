@@ -55,7 +55,6 @@ const timezones = [
 	{ country: "Belarus", timezone: "Europe/Minsk", flag: "🇧🇾" },
 	{ country: "Kazakhstan", timezone: "Asia/Almaty", flag: "🇰🇿" },
 	{ country: "Uzbekistan", timezone: "Asia/Tashkent", flag: "🇺🇿" },
-	{ country: "Vietnam", timezone: "Asia/Ho_Chi_Minh", flag: "🇻🇳" },
 	{ country: "Peru", timezone: "America/Lima", flag: "🇵🇪" },
 	{ country: "Venezuela", timezone: "America/Caracas", flag: "🇻🇪" },
 	{ country: "Cuba", timezone: "America/Havana", flag: "🇨🇺" },

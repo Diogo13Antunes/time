@@ -2,7 +2,30 @@ document.addEventListener('DOMContentLoaded', () => {
 	const countrySelect = document.getElementById("country-select");
 	const clock = document.getElementById("clock");
 	const date = document.getElementById("date");
-	let selectedTimezone = null
+	const languageSelect = document.getElementById("language-select");
+	const formatToggle = document.getElementById("format-toggle");
+	const fullscreenBtn = document.getElementById("fullscreen-btn");
+	const fullscreenIcon = document.getElementById("fullscreen-icon");
+	let selectedTimezone = null;
+	let selectedLanguage = "en-US";
+	let is12hMode = false;
+
+	function loadStoredValue(key, fallback) {
+		try {
+			const value = localStorage.getItem(key);
+			return value === null ? fallback : value;
+		} catch (e) {
+			return fallback;
+		}
+	}
+
+	function saveValue(key, value) {
+		try {
+			localStorage.setItem(key, value);
+		} catch (e) {
+			// storage unavailable (private mode, etc.) — fail silently
+		}
+	}
 
 	function populateSelect() {
 		timezones.forEach(({ country, timezone, flag }) => {
@@ -17,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		const now = new Date();
 		const options = {
 			timeZone: selectedTimezone,
-			hour12: false,
+			hour12: is12hMode,
 			hour: "2-digit",
 			minute: "2-digit",
 			second: "2-digit",
@@ -26,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			month: "long",
 			day: "2-digit",
 		};
-		const formatter = new Intl.DateTimeFormat("en-US", options);
+		const formatter = new Intl.DateTimeFormat(selectedLanguage, options);
 		const parts = formatter.formatToParts(now);
 		const time = `${parts.find((p) => p.type === "hour").value}:${parts.find((p) => p.type === "minute").value}:${parts.find((p) => p.type === "second").value}`;
 		const dayOfWeek = parts.find((p) => p.type === "weekday").value;
@@ -51,23 +74,56 @@ document.addEventListener('DOMContentLoaded', () => {
 		}, delay);
 	}
 
+	function handleTimezoneChange(timezone) {
+		selectedTimezone = timezone;
+		saveValue("selectedTimezone", timezone);
+	}
+
+	function handleLanguageChange(language) {
+		selectedLanguage = language;
+		saveValue("selectedLanguage", language);
+	}
+
+	function handleFormatToggle() {
+		is12hMode = !is12hMode;
+		formatToggle.textContent = is12hMode ? "12h" : "24h";
+		updateClock();
+		saveValue("use12h", is12hMode);
+	}
+
+	// Load stored preferences and initialize UI
+	selectedTimezone = loadStoredValue("selectedTimezone", timezones[0].timezone);
+	selectedLanguage = loadStoredValue("selectedLanguage", "en-US");
+	is12hMode = loadStoredValue("use12h", "false") === "true";
+
 	populateSelect();
-	countrySelect.selectedIndex = 0;
-	selectedTimezone = countrySelect.value;
+	countrySelect.value = selectedTimezone;
+	languageSelect.value = selectedLanguage;
+	formatToggle.textContent = is12hMode ? "12h" : "24h";
+
 	startClock();
 
 	countrySelect.addEventListener("change", (e) => {
-		selectedTimezone = e.target.value;
+		handleTimezoneChange(e.target.value);
 	});
 
-	const fullscreenBtn = document.getElementById("fullscreen-btn");
-	const fullscreenIcon = document.getElementById("fullscreen-icon");
+	languageSelect.addEventListener("change", (e) => {
+		handleLanguageChange(e.target.value);
+	});
+
+	formatToggle.addEventListener("click", () => {
+		handleFormatToggle();
+	});
 
 	fullscreenBtn.addEventListener("click", () => {
 		if (!document.fullscreenElement) {
-			document.documentElement.requestFullscreen();
+			document.documentElement.requestFullscreen().catch(() => {
+				alert("Tela cheia não está disponível neste navegador.");
+			});
 		} else {
-			document.exitFullscreen();
+			document.exitFullscreen().catch(() => {
+				alert("Não foi possível sair da tela cheia.");
+			});
 		}
 	});
 
@@ -75,5 +131,4 @@ document.addEventListener('DOMContentLoaded', () => {
 		const isFullscreen = !!document.fullscreenElement;
 		fullscreenIcon.className = isFullscreen ? "bi bi-fullscreen-exit" : "bi bi-fullscreen";
 	});
-
 });
