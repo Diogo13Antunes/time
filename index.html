@@ -14,22 +14,29 @@
 </head>
 
 <body>
-	<select id="country-select"></select>
-	<select id="language-select">
-		<option value="en-US">🇬🇧 English</option>
-		<option value="pt-PT">🇵🇹 Português (Portugal)</option>
-		<option value="pt-BR">🇧🇷 Português (Brasil)</option>
-	</select>
-	<button id="format-toggle" title="Toggle 12h/24h">24h</button>
+	<div class="ambient-glow" aria-hidden="true"></div>
 
-	<button id="fullscreen-btn">
-		<i class="bi bi-fullscreen" id="fullscreen-icon"></i>
-	</button>
+	<header class="topbar">
+		<div class="controls-group controls-left">
+			<select id="country-select" aria-label="Select country timezone"></select>
+			<select id="language-select" aria-label="Select language">
+				<option value="en-US">🇬🇧 English</option>
+				<option value="pt-PT">🇵🇹 Português (Portugal)</option>
+				<option value="pt-BR">🇧🇷 Português (Brasil)</option>
+			</select>
+		</div>
+		<div class="controls-group controls-right">
+			<button id="format-toggle" title="Toggle 12h/24h" aria-label="Toggle 12 hour or 24 hour format">24h</button>
+			<button id="fullscreen-btn" aria-label="Toggle fullscreen">
+				<i class="bi bi-fullscreen" id="fullscreen-icon"></i>
+			</button>
+		</div>
+	</header>
 
-	<div id="clock-container">
+	<main id="clock-container">
 		<div id="clock">--:--:--</div>
 		<div id="date">--</div>
-	</div>
+	</main>
 
 	<script src="timezones.js"></script>
 	<script src="script.js"></script>
